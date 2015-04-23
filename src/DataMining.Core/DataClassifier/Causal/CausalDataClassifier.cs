@@ -92,15 +92,15 @@ namespace DataMiningSharp.Core.DataClassifier.Causal
             return variable.GetRelevantEntities(value);
         }
 
-        public IEnumerable<TClassifierResult> Query(double minSupport, double minConfidence, IEnumerable<IDataClassifierFilter<TClassifierResult>> filters = null)
+        public IEnumerable<TClassifierResult> Query(double minimumPrecision, double minimumRecall, IEnumerable<IDataClassifierFilter<TClassifierResult>> filters = null)
         {
             var entityCount = Entities.Count();
 
-            Debug.Assert(minSupport > 0, "minSupport>0");
-            Debug.Assert(minSupport <= entityCount, "minSupport <= entityCount");
+            Debug.Assert(minimumPrecision > 0, "minimumPrecision>0");
+            Debug.Assert(minimumPrecision <= entityCount, "minimumPrecision <= entityCount");
 
-            Debug.Assert(minConfidence >= 1, "minConfidence >= 1");
-            Debug.Assert(minConfidence <= 100, "minConfidence <= 100");
+            Debug.Assert(minimumRecall >= 1, "minimumRecall >= 1");
+            Debug.Assert(minimumRecall <= 100, "minimumRecall <= 100");
 
             var collection = new Collection<TClassifierResult>();
             foreach (var variable in CandidateCauseVariables)
@@ -111,8 +111,8 @@ namespace DataMiningSharp.Core.DataClassifier.Causal
                 {
                     var source = variableDomain.GetEntities(domainValue).ToList();
                     var sourceCount = source.Count();
-                    var maxOfEntityAndMinSupport = (int)Math.Ceiling(minSupport * entityCount);
-                    var maxOfMinConfidenceAndSourceCount = (int)Math.Ceiling(minConfidence * sourceCount);
+                    var maxOfEntityAndMinSupport = (int)Math.Ceiling(minimumPrecision * entityCount);
+                    var maxOfMinConfidenceAndSourceCount = (int)Math.Ceiling(minimumRecall * sourceCount);
                     var requiredOccurrences = Math.Max(maxOfMinConfidenceAndSourceCount, maxOfEntityAndMinSupport);
                     if (requiredOccurrences <= sourceCount)
                     {
@@ -126,7 +126,7 @@ namespace DataMiningSharp.Core.DataClassifier.Causal
                             CauseValue = domainValue,
                             EffectVariable = TargetVariable,
                             EffectValue = effectVariableThreshold,
-                            Occurences = occurrences,
+                            Occurrences = occurrences,
                             Precision = precision,
                             Recall = recall
                         };

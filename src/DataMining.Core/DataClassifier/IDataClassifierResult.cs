@@ -11,7 +11,7 @@
 
         double F1Score { get; }
 
-        int Occurences { get; set; }
+        int Occurrences { get; set; }
 
         double Precision { get; set; }
     }

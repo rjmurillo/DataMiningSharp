@@ -14,7 +14,7 @@ namespace DataMiningSharp.Core.DataClassifier.Causal
             object causeValue,
             PropertyInfo effectVariable,
             object effectValue,
-            int occurences,
+            int occurrences,
             double precision,
             double recall)
         {
@@ -24,7 +24,7 @@ namespace DataMiningSharp.Core.DataClassifier.Causal
             EffectValue = effectValue;
             Precision = precision;
             Recall = recall;
-            Occurences = occurences;
+            Occurrences = occurrences;
         }
 
         public object CauseValue { get;  set; }
@@ -43,7 +43,7 @@ namespace DataMiningSharp.Core.DataClassifier.Causal
                 CauseValue,
                 EffectVariable.Name,
                 EffectValue,
-                Occurences,
+                Occurrences,
                 Precision,
                 Recall,
                 F1Score);
