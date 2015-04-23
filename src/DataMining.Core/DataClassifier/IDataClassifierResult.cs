@@ -6,14 +6,13 @@
 
 
 
-        double Recall { get; }
-
+        double Recall { get; set; }
 
 
         double F1Score { get; }
 
-        int Occurences { get; }
+        int Occurences { get; set; }
 
-        double Precision { get; }
+        double Precision { get; set; }
     }
 }

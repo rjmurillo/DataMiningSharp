@@ -11,8 +11,8 @@ namespace DataMiningSharp.Core.DataClassifier
             }
         }
 
-        public int Occurences { get; private set; }
-        public double Precision { get; private set; }
-        public double Recall { get; private set; }
+        public int Occurences { get;  set; }
+        public double Precision { get;  set; }
+        public double Recall { get;  set; }
     }
 }
