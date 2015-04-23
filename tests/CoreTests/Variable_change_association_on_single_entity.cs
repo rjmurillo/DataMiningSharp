@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using DataMiningSharp.Core.DataClassifier.Causal;
 using LightBDD;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,7 +18,7 @@ So that I can understand how different variables are linked
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public partial class Variable_change_association_on_single_entity : FeatureFixture
     {
-        private CausalDataClassifier<Model> _model;
+        private CausalDataClassifier<Model, CausalDataClassifierResult> _model;
         private IEnumerable<CausalDataClassifierResult> _patterns;
 
         [TestMethod]
