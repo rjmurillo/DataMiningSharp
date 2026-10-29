@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using DataMiningSharp.Core.DataClassifier.Causal;
-using LightBDD;
+using LightBDD.Framework;
+using LightBDD.Framework.Scenarios;
+using LightBDD.MsTest3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DataMiningSharp.Core.Tests
@@ -14,14 +16,14 @@ As a Data Analyst
 I can analyze causal relationships in my data
 So that I can understand how different variables are linked
 ")]
-    [TestClass]
+    [FeatureFixture]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public partial class Variable_change_association_on_single_entity : FeatureFixture
     {
         private CausalDataClassifier<Model, CausalDataClassifierResult> _model;
         private IEnumerable<CausalDataClassifierResult> _patterns;
 
-        [TestMethod]
+        [Scenario]
         public void Successful_Pattern_Generation()
         {
             Runner.RunScenario(
@@ -34,7 +36,7 @@ So that I can understand how different variables are linked
                 );
         }
 
-        [TestMethod]
+        [Scenario]
         public void Successful_Pattern_Generation_With_Filters()
         {
             Runner.RunScenario(
